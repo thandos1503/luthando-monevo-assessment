@@ -15,4 +15,3 @@ test_playwright:
     - npx playwright install
     - npm test
 
- 

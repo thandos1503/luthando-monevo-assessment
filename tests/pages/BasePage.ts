@@ -1,7 +1,8 @@
 import { Page, Locator } from '@playwright/test';
 
-export class basePage {
-  private page: Page;
+export class BasePage {
+  page: Page;
+  static page: any;
  
   constructor(page: Page) {
     this.page = page;

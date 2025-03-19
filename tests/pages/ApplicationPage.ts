@@ -1,12 +1,9 @@
 import { Page, Locator } from '@playwright/test';
-import { basePage } from './BasePage';
+import { BasePage } from './BasePage';
 
-export class ApplicationPage extends basePage {
+export class ApplicationPage extends BasePage {
   readonly loanAmount: Locator;
   readonly continue: Locator;
-  readonly loanPeriod:Locator;
-  readonly loanUse: Locator;
-  readonly applicantTitle: Locator;
   readonly applicantFirstName: Locator;
   readonly applicantLastName: Locator;
   readonly applicantDOB: Locator;
@@ -17,9 +14,6 @@ export class ApplicationPage extends basePage {
     super(page);
     this.loanAmount = page.locator('//input[@name="loanAmount"]');
     this.continue = page.locator('#continue-button');
-    this.loanPeriod = page.locator('//button[text()=" 3 months"]');
-    this.loanUse = page.locator('//button[text()=" Home improvements"]');
-    this.applicantTitle = page.locator('//button[text()=" Mr"]');
     this.applicantFirstName = page.locator('#firstName');
     this.applicantLastName = page.locator('#lastName');
     this.applicantDOB = page.locator('#dateOfBirth');
@@ -39,16 +33,16 @@ export class ApplicationPage extends basePage {
     await this.continue.click();
   }
 
-  async selectLoanPeriod() {
-    await this.loanPeriod.click();
+  async selectLoanPeriod(period: string) {
+    await this.page.getByRole('button', { name: period, exact: true }).click();
   }
 
-  async selectLoanUse() {
-    await this.loanUse.click();
+  async selectLoanUse(loanUse: string) {
+    await this.page.getByRole('button', { name: loanUse, exact: true }).click();
   }
 
   async selectApplicantTitle(title: string) {
-    await this.applicantTitle.click();
+    await this.page.getByRole('button', { name: title, exact: true}).click()
   }
 
   async inputApplicantFirstNameAndLastName(firstName: string, lastName: string) {
