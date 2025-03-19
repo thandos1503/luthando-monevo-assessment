@@ -1,0 +1,24 @@
+
+{
+  "name": "luthando-monevo-assessment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "cucumber-js --parallel 3 --require-module ts-node/register --require tests/support/hooks.ts tests/features/step_definitions/**/*.ts tests/features/**/*.feature"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.0.0",
+    "@playwright/test": "^1.47.0",
+    "@types/node": "^22.2.0",
+    "ts-node": "^10.10.0",
+    "typescript": "^5.6.0"
+  },
+  "dependencies": {
+    "playwright": "^1.47.0"
+  }
+}
